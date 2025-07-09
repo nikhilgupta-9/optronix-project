@@ -1,0 +1,278 @@
+/* ========== Theme Customizations ========== */
+:root {
+  /* Default Theme (Light) */
+  --text-color: #212529;
+  --text-muted: #6c757d;
+  --body-bg: #f8f9fa;
+  --card-bg: #ffffff;
+  --input-bg: #ffffff;
+  --border-color: #dee2e6;
+  
+  /* Primary Color Default (Purple) */
+  --primary: #6e00ff;
+  --primary-light: #9d4dff;
+  --primary-dark: #4a00b0;
+  
+  /* Other Color Variables */
+  --secondary: #ff00aa;
+  --success: #00c853;
+  --error: #ff1744;
+  --warning: #ff9100;
+  --info: #00b0ff;
+  
+  /* Text Colors */
+  --text-light: #f8f9fa;
+  
+  /* Background Colors */
+  --navbar-bg: #2c3e50;
+  --footer-bg: #2c3e50;
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  
+  /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  
+  /* Border Radius */
+  --border-radius-sm: 0.25rem;
+  --border-radius-md: 0.375rem;
+  --border-radius-lg: 0.5rem;
+  --border-radius-xl: 1rem;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+  
+  /* Animation */
+  --transition-base: all 0.3s ease;
+  --transition-bounce: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Dark Theme */
+[data-theme="dark"] {
+  --text-color: #f8f9fa;
+  --text-muted: #adb5bd;
+  --body-bg: #212529;
+  --card-bg: #343a40;
+  --input-bg: #343a40;
+  --border-color: #495057;
+  --glass-bg: rgba(30, 30, 30, 0.5);
+  --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+/* Custom Theme Colors */
+.theme-purple {
+  --primary: #6e00ff;
+  --primary-light: #9d4dff;
+  --primary-dark: #4a00b0;
+}
+
+.theme-blue {
+  --primary: #0066ff;
+  --primary-light: #4d8aff;
+  --primary-dark: #0047b0;
+}
+
+.theme-green {
+  --primary: #00b050;
+  --primary-light: #4dff88;
+  --primary-dark: #007a37;
+}
+
+/* ========== Base Styles ========== */
+.main-app {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: var(--body-bg);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Smooth scrolling for modern browsers */
+@media (prefers-reduced-motion: no-preference) {
+  .main-app {
+    scroll-behavior: smooth;
+  }
+}
+
+
+/* Ripple Effect for Buttons */
+.main-app .btn::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.5);
+  opacity: 0;
+  border-radius: 100%;
+  transform: scale(1, 1) translate(-50%, -50%);
+  transform-origin: 50% 50%;
+}
+
+.main-app .btn:hover::after {
+  animation: ripple 1s ease-out;
+}
+
+@keyframes ripple {
+  0% { transform: scale(0, 0); opacity: 0.5; }
+  100% { transform: scale(20, 20); opacity: 0; }
+}
+
+/* Card Styles with Glass Morphism Option */
+.card-body {
+  background: linear-gradient(145deg, rgba(100, 150, 255, 0.15), rgba(200, 220, 255, 0.25));
+  border-radius: 18px;
+  box-shadow: 
+    0 6px 20px rgba(100, 150, 255, 0.1),
+    0 1px 3px rgba(0, 0, 0, 0.05);
+  padding: 2rem;
+  color: #333;
+  transition: all 0.3s ease-out;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(6px);
+  margin: 0 auto;
+}
+
+.card-body:hover {
+  transform: translateY(-3px);
+  box-shadow: 
+    0 8px 25px rgba(100, 150, 255, 0.15),
+    0 2px 5px rgba(0, 0, 0, 0.08);
+}
+
+.card-body h2 {
+  color: #4466aa;
+  margin-bottom: 1.75rem;
+  font-size: 1.8rem;
+  text-align: center;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+
+.card-body .form-group {
+  margin-bottom: 1.75rem;
+}
+
+.card-body label {
+  display: block;
+  margin-bottom: 0.6rem;
+  color: #556677;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.card-body input,
+.card-body select,
+.card-body textarea {
+  width: 100%;
+  padding: 14px 18px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.7);
+  color: #334455;
+  font-size: 1rem;
+  transition: all 0.25s ease;
+}
+
+.card-body input:focus,
+.card-body select:focus,
+.card-body textarea:focus {
+  outline: none;
+  border-color: #88aaff;
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 0 3px rgba(136, 170, 255, 0.15);
+}
+
+.card-body button {
+  background: linear-gradient(to right, #88aaff, #8f3eec);
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 10px;
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  margin-top: 1.25rem;
+  box-shadow: 0 2px 8px rgba(136, 170, 255, 0.3);
+}
+
+.card-body button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(136, 170, 255, 0.4);
+  background: linear-gradient(to right, #814ada, #628bf3);
+}
+
+.card-body .form-footer {
+  text-align: center;
+  margin-top: 1.75rem;
+  color: #778899;
+  font-size: 0.9rem;
+}
+
+.card-body a {
+  color: #6699ff;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.card-body a:hover {
+  color: #4466aa;
+  text-decoration: underline;
+}
+
+/* form outer body style */
+.form-outer{
+  padding: 10px;
+  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 0.192);
+}
+
+/* Responsive Typography */
+@media (max-width: 768px) {
+  .main-app {
+    font-size: 15px;
+  }
+  
+  .main-app .section-title {
+    font-size: 2rem;
+  }
+}
+
+/* Animation Classes */
+.main-app .animate-fade {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.main-app .animate-slide-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
